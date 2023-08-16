@@ -129,38 +129,56 @@ $mainMenu.forEach((e,i)=>{
     })
 })
 
-// const thumbs_swiper = new Swiper(".thumbs-slide",{
-//     // thumbs: {
-//     //     swiper: thumbs_swiper
-//     // },
-//     // slidesPerView: 1,
-// })
+const $btnPlay = document.querySelector(".swiper-button-play")
+const $btnPause = document.querySelector(".swiper-button-pause")
 
-// const swiper = new Swiper(".swiper",{
-//     thumbs: {
-//         swiper: thumbs_swiper
-//     },
-//     autoplay: {
-//         delay: 3000,
-//         // reverseDirection: true
-//     },
-//     // slidesPerView: 1,
-//     scrollbar: {
-//         el: ".swiper-scrollbar",
-//         hide: true,
-//     },
-//     navigation : {
-//         nextEl: ".swiper-button-next",
-//         prevEl: ".swiper-button-prev"
-//     },
-//     pagination: {
-//         el: ".swiper-pagination",
-//         type: "fraction",
-//     },
-//     // changeLanguageDirection(ltr)
-//     // swipeDirection: 
-//     // slideNextTransitionEnd: {
-//     //     swipeDirection: next
-//     // }
-// })
+
+$btnPlay.addEventListener("click", function(){
+    $btnPlay.style.display = "none"
+    $btnPause.style.display = "block"
+    swiper.autoplay.start();
+})
+$btnPause.addEventListener("click", function(){
+    $btnPlay.style.display = "block"
+    $btnPause.style.display = "none"
+    swiper.autoplay.stop();
+})
+
+const thumbs_swiper = new Swiper(".thumbs-slide",{
+    // thumbs: {
+    //     swiper: thumbs_swiper
+    // },
+    // slidesPerView: 1,
+})
+
+const swiper = new Swiper(".swiper",{
+    thumbs: {
+        swiper: thumbs_swiper
+    },
+    // autoplay: {
+    //     delay: 3000,
+    //     // reverseDirection: true
+    // },
+    // slidesPerView: 1,
+    scrollbar: {
+        el: ".swiper-scrollbar",
+        // hide: true,
+    },
+    navigation : {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+    },
+    // changeLanguageDirection(ltr)
+    // swipeDirection: 
+    // slideNextTransitionEnd: {
+    //     swipeDirection: next
+    // }
+    // allowTouchMove : false,
+})
+
+
 
