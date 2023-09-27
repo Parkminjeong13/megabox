@@ -132,33 +132,27 @@ $mainMenu.forEach((e,i)=>{
 const $btnPlay = document.querySelector(".swiper-button-play")
 const $btnPause = document.querySelector(".swiper-button-pause")
 
-
-$btnPlay.addEventListener("click", function(){
-    $btnPlay.style.display = "none"
-    $btnPause.style.display = "block"
-    swiper.autoplay.start();
-})
-$btnPause.addEventListener("click", function(){
-    $btnPlay.style.display = "block"
-    $btnPause.style.display = "none"
-    swiper.autoplay.stop();
-})
-
 const thumbs_swiper = new Swiper(".thumbs-slide",{
     // thumbs: {
     //     swiper: thumbs_swiper
     // },
+    // autoplay: {
+    //     delay: 3000,
+    // },
     // slidesPerView: 1,
+    // direction: "vertical",
+    
+     
 })
 
 const swiper = new Swiper(".swiper",{
-    thumbs: {
-        swiper: thumbs_swiper
-    },
-    // autoplay: {
-    //     delay: 3000,
-    //     // reverseDirection: true
+    // thumbs: {
+    //     swiper: thumbs_swiper
     // },
+    autoplay: {
+        delay: 3000,
+        // reverseDirection: true
+    },
     // slidesPerView: 1,
     scrollbar: {
         el: ".swiper-scrollbar",
@@ -173,12 +167,45 @@ const swiper = new Swiper(".swiper",{
         type: "fraction",
     },
     // changeLanguageDirection(ltr)
-    // swipeDirection: 
     // slideNextTransitionEnd: {
     //     swipeDirection: next
     // }
-    // allowTouchMove : false,
+    allowTouchMove : false,
+    // on: {
+    //     slideNextTransitionEnd: function(){
+    //         this.slides.forEach(element => {
+    //         element.childNodes[1].dataset.swiperParallaxY = '0';
+    //         });
+    //         this.slides[active].childNodes[1].dataset.swiperParallaxY = '100%';
+    //     },
+    //     slidePrevTransitionEnd: function(){
+    //         this.slides.forEach(element => {
+    //         element.childNodes[1].dataset.swiperParallaxY = '0';
+    //         });
+    //         this.slides[active].childNodes[1].dataset.swiperParallaxY = '100%';
+    //     },
+    // }
+    // on: {
+    //     slideChange : function(){
+            
+    //     },
+    // },
+
 })
 
+$btnPlay.addEventListener("click", function(){
+    swiper.autoplay.start();
+    thumbs_swiper.autoplay.start();
+    $btnPlay.style.display = "none"
+    $btnPause.style.display = "block"
+})
+$btnPause.addEventListener("click", function(){
+    swiper.autoplay.stop();
+    thumbs_swiper.autoplay.stop();
+    $btnPlay.style.display = "block"
+    $btnPause.style.display = "none"
+})
 
+thumbs_swiper.controller.control = swiper
+swiper.controller.control = thumbs_swiper
 
